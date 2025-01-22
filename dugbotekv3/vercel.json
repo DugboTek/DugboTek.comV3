@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ],
-  "buildCommand": "npm run build",
+  "buildCommand": "npx tsc && npx vite build",
   "outputDirectory": "dist",
   "framework": "vite",
   "public": true
