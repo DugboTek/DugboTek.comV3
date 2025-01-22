@@ -1,12 +1,9 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": { "maxLambdaSize": "15mb" }
-    }
-  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "public": true
 } 
