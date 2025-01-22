@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+// const navigate = useNavigate();
 
 const SignupPage = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     businessName: '',
     businessDescription: '',
@@ -21,6 +23,8 @@ const SignupPage = () => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
+    // If you need navigation after form submission, you can add it back here
+    // navigate('/success');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
