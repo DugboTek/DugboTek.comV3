@@ -1,3 +1,24 @@
+import openaiLogo from '../assets/providers/openai.png';
+import geminiLogo from '../assets/providers/google gemini.png';
+import mistralLogo from '../assets/providers/mistral.png';
+import perplexityLogo from '../assets/providers/perplexityai.png';
+import salesforceLogo from '../assets/providers/Salesforce.com_logo.svg.webp';
+import hubspotLogo from '../assets/providers/hubspot_icon.jpeg.svg';
+import dynamicsLogo from '../assets/providers/Dynamics 360 CRM.png';
+import salesloftLogo from '../assets/providers/Salesloft.webp';
+import workspaceLogo from '../assets/providers/google workspace.svg';
+import sheetsLogo from '../assets/providers/googlesheets.svg';
+import docsLogo from '../assets/providers/googledocs.png';
+import notionLogo from '../assets/providers/notion.jpeg';
+import airtableLogo from '../assets/providers/airtable.svg';
+import postgresLogo from '../assets/providers/postgres.svg';
+import stripeLogo from '../assets/providers/stripe.svg';
+import githubLogo from '../assets/providers/github.svg';
+import mapsLogo from '../assets/providers/google maps.svg';
+import translateLogo from '../assets/providers/google translate.png';
+import youtubeLogo from '../assets/providers/youtube.png';
+import instagramLogo from '../assets/providers/instagram.svg';
+
 export interface ServiceProvider {
   id: string;
   name: string;
@@ -13,7 +34,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "openai",
     name: "OpenAI",
-    logo: "/src/assets/providers/openai.png",
+    logo: openaiLogo,
     emoji: "🤖",
     description: "AI language models and GPT integration",
     isInitiallyVisible: true,
@@ -23,7 +44,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-gemini",
     name: "Google Gemini",
-    logo: "/src/assets/providers/google gemini.png",
+    logo: geminiLogo,
     emoji: "🧠",
     description: "Advanced AI model for multimodal tasks",
     isInitiallyVisible: true,
@@ -33,7 +54,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "mistral",
     name: "Mistral AI",
-    logo: "/src/assets/providers/mistral.png",
+    logo: mistralLogo,
     emoji: "🌪️",
     description: "Open-source AI language models",
     isInitiallyVisible: false,
@@ -43,7 +64,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "perplexity",
     name: "Perplexity AI",
-    logo: "/src/assets/providers/perplexityai.png",
+    logo: perplexityLogo,
     emoji: "🔍",
     description: "AI-powered search and analysis",
     isInitiallyVisible: true,
@@ -53,7 +74,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "salesforce",
     name: "Salesforce",
-    logo: "/src/assets/providers/Salesforce.com_logo.svg.webp",
+    logo: salesforceLogo,
     emoji: "☁️",
     description: "CRM and cloud solutions platform",
     isInitiallyVisible: true,
@@ -63,7 +84,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "hubspot",
     name: "HubSpot",
-    logo: "/src/assets/providers/hubspot_icon.jpeg.svg",
+    logo: hubspotLogo,
     emoji: "🎯",
     description: "Marketing and CRM automation",
     isInitiallyVisible: false,
@@ -73,8 +94,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "dynamics-crm",
     name: "Dynamics 365",
-    logo: "/src/assets/providers/Dynamics 360 CRM.png",
-    emoji: "💼",
+    logo: dynamicsLogo,
+    emoji: "��",
     description: "Microsoft's enterprise CRM solution",
     isInitiallyVisible: false,
     color: "#002050",
@@ -83,7 +104,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "salesloft",
     name: "SalesLoft",
-    logo: "/src/assets/providers/Salesloft.webp",
+    logo: salesloftLogo,
     emoji: "📈",
     description: "Sales engagement platform",
     isInitiallyVisible: true,
@@ -93,8 +114,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-workspace",
     name: "Google Workspace",
-    logo: "/src/assets/providers/google workspace.svg",
-    emoji: "📝",
+    logo: workspaceLogo,
+    emoji: "��",
     description: "Integrated productivity suite",
     isInitiallyVisible: true,
     color: "#4285f4",
@@ -103,8 +124,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-sheets",
     name: "Google Sheets",
-    logo: "/src/assets/providers/googlesheets.svg",
-    emoji: "📊",
+    logo: sheetsLogo,
+    emoji: "��",
     description: "Cloud-based spreadsheet solution",
     isInitiallyVisible: true,
     color: "#0f9d58",
@@ -113,7 +134,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-docs",
     name: "Google Docs",
-    logo: "/src/assets/providers/googledocs.png",
+    logo: docsLogo,
     emoji: "📄",
     description: "Collaborative document editing",
     isInitiallyVisible: false,
@@ -123,7 +144,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "notion",
     name: "Notion",
-    logo: "/src/assets/providers/notion.jpeg",
+    logo: notionLogo,
     emoji: "📓",
     description: "All-in-one workspace platform",
     isInitiallyVisible: true,
@@ -133,7 +154,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "airtable",
     name: "Airtable",
-    logo: "/src/assets/providers/airtable.svg",
+    logo: airtableLogo,
     emoji: "🗂️",
     description: "Flexible database and spreadsheet hybrid",
     isInitiallyVisible: false,
@@ -143,8 +164,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "postgres",
     name: "PostgreSQL",
-    logo: "/src/assets/providers/postgres.svg",
-    emoji: "🐘",
+    logo: postgresLogo,
+    emoji: "��",
     description: "Advanced open-source database",
     isInitiallyVisible: true,
     color: "#336791",
@@ -153,8 +174,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "stripe",
     name: "Stripe",
-    logo: "/src/assets/providers/stripe.svg",
-    emoji: "💳",
+    logo: stripeLogo,
+    emoji: "��",
     description: "Payment processing platform",
     isInitiallyVisible: true,
     color: "#635bff",
@@ -163,8 +184,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "github",
     name: "GitHub",
-    logo: "/src/assets/providers/github.svg",
-    emoji: "🐙",
+    logo: githubLogo,
+    emoji: "��",
     description: "Code hosting and collaboration",
     isInitiallyVisible: true,
     color: "#24292e",
@@ -173,8 +194,8 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-maps",
     name: "Google Maps",
-    logo: "/src/assets/providers/google maps.svg",
-    emoji: "🗺️",
+    logo: mapsLogo,
+    emoji: "��️",
     description: "Location and mapping services",
     isInitiallyVisible: false,
     color: "#4285f4",
@@ -183,7 +204,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "google-translate",
     name: "Google Translate",
-    logo: "/src/assets/providers/google translate.png",
+    logo: translateLogo,
     emoji: "🌐",
     description: "Language translation service",
     isInitiallyVisible: false,
@@ -193,7 +214,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "youtube",
     name: "YouTube",
-    logo: "/src/assets/providers/youtube.png",
+    logo: youtubeLogo,
     emoji: "▶️",
     description: "Video content platform",
     isInitiallyVisible: true,
@@ -203,7 +224,7 @@ export const serviceProviders: ServiceProvider[] = [
   {
     id: "instagram",
     name: "Instagram",
-    logo: "/src/assets/providers/instagram.svg",
+    logo: instagramLogo,
     emoji: "📸",
     description: "Social media and photo sharing",
     isInitiallyVisible: false,
