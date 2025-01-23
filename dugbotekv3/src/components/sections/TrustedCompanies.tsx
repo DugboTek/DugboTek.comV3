@@ -30,7 +30,7 @@ const companies = [
 
 export const TrustedCompanies: React.FC = () => {
   return (
-    <div className="mt-48 w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-white overflow-hidden">
+    <div className="mt-48 w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-white overflow-hidden z-[1]">
       {/* Background Grid */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <svg className="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="none">
@@ -81,7 +81,7 @@ export const TrustedCompanies: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="py-16 relative z-0">
+      <div className="py-16 relative z-[2]">
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-2xl font-semibold text-center mb-12 text-clay-text">
             CONNECT WITH A LIBRARY OF 2000+ EXISTING BUSINESS TOOLS
