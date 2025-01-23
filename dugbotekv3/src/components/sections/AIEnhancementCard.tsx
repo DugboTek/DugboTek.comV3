@@ -16,16 +16,31 @@ const aiFeatures = [
 
 const AIEnhancementCard = ({ className = '' }: AIEnhancementCardProps) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleMouseEnter = () => {
+    if (!isOpen) setIsHovered(true)
+  }
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setIsOpen(false)
+  }
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsHovered(false)
+    setIsOpen(!isOpen)
+  }
 
   return (
-    <div className={`${isHovered ? 'z-[100]' : 'z-10'} relative`}>
+    <div className={`${(isHovered || isOpen) ? 'z-[200]' : 'z-10'} relative`}>
       <motion.div
         className={`relative bg-white rounded-xl shadow-card p-4 cursor-pointer ${className}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
         initial={false}
         animate={{
-          boxShadow: isHovered 
+          boxShadow: (isHovered || isOpen)
             ? '0px 8px 24px rgba(0, 0, 0, 0.08)' 
             : '0px 4px 12px rgba(0, 0, 0, 0.05)'
         }}
@@ -39,9 +54,9 @@ const AIEnhancementCard = ({ className = '' }: AIEnhancementCardProps) => {
         </div>
 
         <AnimatePresence>
-          {isHovered && (
+          {(isHovered || isOpen) && (
             <motion.div
-              className="absolute top-full left-0 w-[320px] bg-white rounded-xl shadow-lg mt-2 overflow-hidden"
+              className="absolute top-full left-0 w-[320px] bg-white rounded-xl shadow-lg mt-2 overflow-hidden z-[500]"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
