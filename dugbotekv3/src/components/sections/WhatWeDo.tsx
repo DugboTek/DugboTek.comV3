@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import textContent from '../../data/content/TextContent.json'
 import OpportunitiesList from './OpportunitiesList'
 import TimeSavedCounter from './TimeSavedCounter'
+import { Link } from 'react-router-dom'
 
 const WhatWeDo = () => {
   const { whatWeDo } = textContent
@@ -198,6 +199,22 @@ const WhatWeDo = () => {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Call to Action Button */}
+      <div className="flex justify-center mt-16">
+        <Link
+          to="/signup"
+          className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-base lg:text-nav px-8 py-4 rounded-lg font-medium flex items-center gap-2 relative"
+        >
+          <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Book a Discovery Call
+          <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+            Free
+          </span>
+        </Link>
       </div>
     </section>
   )
