@@ -1,46 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import textContent from '../../data/content/TextContent.json'
-import { useEffect, useState } from 'react'
-
-const opportunities = [
-  "Manually processing invoices",
-  "Responding to routine customer inquiries",
-  "Managing appointment schedules",
-  "Data entry and validation tasks",
-  "Generating recurring reports",
-  "Processing customer orders",
-  "Email sorting and categorization",
-  "Document classification",
-  "Inventory management",
-  "Customer feedback analysis",
-  "Employee onboarding processes",
-  "Expense report processing"
-]
-
-const ROTATION_INTERVAL = 3000 // 3 seconds per item
+import OpportunitiesList from './OpportunitiesList'
 
 const WhatWeDo = () => {
   const { whatWeDo } = textContent
   const { sections } = whatWeDo
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
-
-  // Get current visible items with their indices for stable keys
-  const visibleItems = [
-    { text: opportunities[currentIndex % opportunities.length], key: currentIndex, isNew: true },
-    { text: opportunities[(currentIndex + 1) % opportunities.length], key: currentIndex + 1, isNew: false },
-    { text: opportunities[(currentIndex + 2) % opportunities.length], key: currentIndex + 2, isNew: false }
-  ]
-
-  useEffect(() => {
-    if (isHovered) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => prev + 1)
-    }, ROTATION_INTERVAL)
-
-    return () => clearInterval(interval)
-  }, [isHovered])
 
   return (
     <section className="py-24 bg-gray-50">
@@ -85,8 +49,6 @@ const WhatWeDo = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
           >
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
               🔍
@@ -98,51 +60,10 @@ const WhatWeDo = () => {
               <p className="text-clay-subtext leading-relaxed">
                 Our expertise lies in identifying those frustrating bottlenecks in your business operations.
               </p>
-              <p className="text-clay-subtext leading-relaxed">
+              <p className="text-clay-subtext leading-relaxed mb-6">
                 We spot where AI can make the biggest impact in your daily tasks:
               </p>
-              <div className="h-[108px] relative overflow-hidden bg-gray-900 rounded-lg p-2">
-                <AnimatePresence initial={false} mode="popLayout">
-                  {visibleItems.map(({ text, key, isNew }, index) => (
-                    <motion.div
-                      key={key}
-                      className={`flex items-start gap-2 absolute w-full ${isNew ? 'bg-green-500/20' : ''} rounded px-2 py-1`}
-                      initial={{ opacity: 0, y: -36, backgroundColor: 'rgba(34, 197, 94, 0.4)' }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: index * 36,
-                        backgroundColor: isNew ? 'rgba(34, 197, 94, 0.2)' : 'transparent',
-                        transition: {
-                          y: { duration: 0.4, ease: "easeOut" },
-                          backgroundColor: { duration: 1, ease: "easeOut" }
-                        }
-                      }}
-                      exit={{ 
-                        opacity: 0,
-                        y: 108,
-                        transition: { duration: 0.3, ease: "easeIn" }
-                      }}
-                    >
-                      <span className={`mt-1 flex-shrink-0 text-xs ${isNew ? 'text-green-400' : 'text-blue-400'}`}>
-                        {isNew ? '▲' : '•'}
-                      </span>
-                      <span className={`${isNew ? 'text-green-400' : 'text-gray-300'} text-sm font-medium`}>
-                        {text}
-                      </span>
-                      {isNew && (
-                        <motion.span
-                          className="ml-auto text-green-400 text-xs font-medium"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          NEW
-                        </motion.span>
-                      )}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
+              <OpportunitiesList />
             </div>
           </motion.div>
 

@@ -5,7 +5,29 @@
       "sections": {
         "findingOpportunities": {
           "title": "Finding Hidden Opportunities",
-          "content": "Our expertise lies in identifying those frustrating bottlenecks in your business operations – the repetitive tasks that eat away at your valuable time. Whether it's manually processing invoices, responding to routine customer inquiries, or managing appointment schedules, we spot where AI can make the biggest impact."
+          "content": "Our expertise lies in identifying those frustrating bottlenecks in your business operations – the repetitive tasks that eat away at your valuable time. Whether it's manually processing invoices, responding to routine customer inquiries, or managing appointment schedules, we spot where AI can make the biggest impact.",
+          "automationOpportunities": [
+            "Processing customer invoices and receipts",
+            "Scheduling appointments and meetings",
+            "Responding to common customer inquiries",
+            "Data entry and document processing",
+            "Managing inventory and stock levels",
+            "Generating financial reports",
+            "Processing employee timesheets",
+            "Handling expense claims",
+            "Updating customer records",
+            "Managing social media posts",
+            "Monitoring website analytics",
+            "Processing job applications",
+            "Generating sales quotes",
+            "Managing email campaigns",
+            "Tracking project milestones",
+            "Processing purchase orders",
+            "Managing customer feedback",
+            "Updating product catalogs",
+            "Processing insurance claims",
+            "Managing customer subscriptions"
+          ]
         },
         "customSolutions": {
           "title": "Custom Solutions for Your Business",
