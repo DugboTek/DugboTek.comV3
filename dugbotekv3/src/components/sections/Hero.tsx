@@ -11,21 +11,21 @@ const Hero = () => {
   return (
     <>
       <section className="relative pt-24 pb-32 overflow-visible">
-        <div className="container mx-auto px-4">
-          <h1 className="text-hero-title font-bold leading-hero text-clay-text max-w-hero tracking-[-0.02em] text-center mx-auto">
+        <div className="container mx-auto px-6 md:px-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-hero-title font-bold leading-tight lg:leading-hero text-clay-text max-w-hero tracking-[-0.02em] text-center mx-auto">
             Automate Your Business
             <br />
             with Intelligent Solutions
           </h1>
-          <p className="text-hero-subtitle leading-subtitle text-clay-subtext max-w-subtitle mt-6 text-center mx-auto">
+          <p className="text-lg sm:text-xl lg:text-hero-subtitle leading-relaxed lg:leading-subtitle text-clay-subtext max-w-subtitle mt-6 text-center mx-auto px-4 sm:px-0">
             Transform your operations with our AI-powered automation platform. Analyze, integrate, and optimize your business processes.
           </p>
 
           {/* Add button */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8 px-4 sm:px-0">
             <Link
               to="/signup"
-              className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-nav px-6 py-4 rounded-lg font-medium flex items-center gap-2"
+              className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-base lg:text-nav px-6 py-4 rounded-lg font-medium flex items-center gap-2"
             >
               <svg 
                 className="w-5 h-5" 
@@ -45,7 +45,7 @@ const Hero = () => {
           </div>
 
           <div className="relative mt-20 min-h-[1000px] lg:min-h-[800px]">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative h-[800px] isolate overflow-visible">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative h-[800px] isolate overflow-visible px-4 sm:px-0">
               {/* Cards with consistent spacing */}
               <div className="relative lg:top-[160px] h-[80px]">
                 <SystemAnalysisCard className="w-full max-w-[280px] mx-auto" />
