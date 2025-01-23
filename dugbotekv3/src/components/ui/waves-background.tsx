@@ -7,9 +7,7 @@ const isLowEndDevice = () => {
     // Check if it's a mobile device
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
     // Check if it's a low-end device (less than 4 logical processors)
-    (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) ||
-    // Check if device memory is less than 4GB (if available)
-    (navigator.deviceMemory && navigator.deviceMemory < 4)
+    (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4)
   )
 }
 
@@ -17,8 +15,8 @@ const isLowEndDevice = () => {
 const isBrowserCompatible = () => {
   return (
     typeof window !== 'undefined' &&
-    window.requestAnimationFrame &&
-    window.cancelAnimationFrame &&
+    typeof window.requestAnimationFrame === 'function' &&
+    typeof window.cancelAnimationFrame === 'function' &&
     typeof document.createElement('canvas').getContext === 'function'
   )
 }

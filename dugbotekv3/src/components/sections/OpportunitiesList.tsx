@@ -6,8 +6,8 @@ const OpportunitiesList = () => {
   const [opportunities, setOpportunities] = useState<Array<{ id: number; text: string }>>([])
   const [isPaused, setIsPaused] = useState(false)
   const opportunitiesRef = useRef(textContent.whatWeDo.sections.findingOpportunities.automationOpportunities)
-  const [currentIndex, setCurrentIndex] = useState(0)
   const idCounterRef = useRef(0)
+  const currentIndexRef = useRef(0)
 
   useEffect(() => {
     // Initialize with first 3 items
@@ -22,15 +22,12 @@ const OpportunitiesList = () => {
     if (isPaused) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % opportunitiesRef.current.length
-        const nextOpportunities = [
-          { id: idCounterRef.current++, text: opportunitiesRef.current[nextIndex] },
-          ...opportunities.slice(0, 2)
-        ]
-        setOpportunities(nextOpportunities)
-        return nextIndex
-      })
+      currentIndexRef.current = (currentIndexRef.current + 1) % opportunitiesRef.current.length
+      const nextOpportunities = [
+        { id: idCounterRef.current++, text: opportunitiesRef.current[currentIndexRef.current] },
+        ...opportunities.slice(0, 2)
+      ]
+      setOpportunities(nextOpportunities)
     }, 3000)
 
     return () => clearInterval(interval)
