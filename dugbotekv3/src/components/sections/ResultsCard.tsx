@@ -18,7 +18,7 @@ const ResultsCard = ({ className = '' }: ResultsCardProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div className={`${isHovered ? 'z-[100]' : 'z-10'} relative`}>
+    <div className={`${isHovered ? 'z-[200]' : 'z-10'} relative`}>
       <motion.div
         className={`relative bg-white rounded-xl shadow-card p-4 cursor-pointer ${className}`}
         onMouseEnter={() => setIsHovered(true)}
@@ -41,7 +41,7 @@ const ResultsCard = ({ className = '' }: ResultsCardProps) => {
         <AnimatePresence>
           {isHovered && (
             <motion.div
-              className="absolute top-full left-0 w-[320px] bg-white rounded-xl shadow-lg mt-2 overflow-hidden"
+              className="absolute top-full right-0 w-[320px] bg-white rounded-xl shadow-lg mt-2 overflow-hidden z-[500]"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}

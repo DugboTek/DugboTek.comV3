@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <section className="relative pt-24 pb-32 overflow-hidden">
+    <section className="relative pt-24 pb-32 overflow-visible">
       <div className="container mx-auto px-4">
         <h1 className="text-hero-title font-bold leading-hero text-clay-text max-w-hero tracking-[-0.02em] text-center mx-auto">
           Automate Your Business
@@ -42,24 +42,24 @@ const Hero = () => {
           </Link>
         </div>
 
-        <div className="relative mt-20 min-h-[600px] md:min-h-[800px]">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative h-[800px] isolate">
+        <div className="relative mt-20 min-h-[1000px] lg:min-h-[800px]">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative h-[800px] isolate overflow-visible">
             {/* Cards with consistent spacing */}
-            <div className="relative md:top-[160px] h-[80px]">
-              <SystemAnalysisCard className="w-full max-w-[250px] mx-auto" />
+            <div className="relative lg:top-[160px] h-[80px]">
+              <SystemAnalysisCard className="w-full max-w-[280px] mx-auto" />
             </div>
-            <div className="relative md:top-[400px] h-[80px]">
-              <IntegrationCard className="w-full max-w-[250px] mx-auto" />
+            <div className="relative lg:top-[400px] h-[80px]">
+              <IntegrationCard className="w-full max-w-[280px] mx-auto" />
             </div>
-            <div className="relative md:top-[160px] h-[80px]">
-              <AIEnhancementCard className="w-full max-w-[250px] mx-auto" />
+            <div className="relative lg:top-[160px] h-[80px]">
+              <AIEnhancementCard className="w-full max-w-[280px] mx-auto" />
             </div>
-            <div className="relative md:top-[400px] h-[80px]">
-              <ResultsCard className="w-full max-w-[250px] mx-auto" />
+            <div className="relative lg:top-[400px] h-[80px]">
+              <ResultsCard className="w-full max-w-[280px] mx-auto" />
             </div>
 
             {/* Desktop Connecting Lines */}
-            <div className="hidden md:block absolute inset-0 pointer-events-none -z-10">
+            <div className="hidden lg:block absolute inset-0 pointer-events-none -z-10">
               <svg className="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
                 {/* Analysis to Integration */}
                 <motion.path
@@ -108,7 +108,7 @@ const Hero = () => {
             </div>
 
             {/* Mobile Connecting Lines */}
-            <div className="block md:hidden absolute inset-0 pointer-events-none -z-10">
+            <div className="block lg:hidden absolute inset-0 pointer-events-none -z-10">
               <svg className="w-full h-full" viewBox="0 0 400 800" preserveAspectRatio="none">
                 {/* Analysis to Integration */}
                 <motion.path
