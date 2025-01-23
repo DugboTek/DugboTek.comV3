@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import textContent from '../../data/content/TextContent.json'
 import OpportunitiesList from './OpportunitiesList'
+import TimeSavedCounter from './TimeSavedCounter'
 
 const WhatWeDo = () => {
   const { whatWeDo } = textContent
@@ -118,13 +119,11 @@ const WhatWeDo = () => {
             <h3 className="text-2xl font-semibold text-clay-text mb-4">
               {sections.results.title}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <p className="text-clay-subtext leading-relaxed">
                 Imagine completing your monthly reporting in minutes instead of days.
               </p>
-              <p className="text-clay-subtext leading-relaxed">
-                Having customer support questions answered instantly, 24/7.
-              </p>
+              <TimeSavedCounter />
               <p className="text-clay-subtext leading-relaxed">
                 Our AI solutions don't just save time – they transform how your business operates, giving you the freedom to focus on what really matters: growing your business and serving your customers better.
               </p>
