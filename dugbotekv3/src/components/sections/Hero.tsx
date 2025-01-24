@@ -154,75 +154,24 @@ const Hero = () => {
                 </motion.div>
               </div>
 
-              {/* Process Step Labels - Mobile */}
-              <div className="block lg:hidden absolute inset-0 pointer-events-none" style={{ zIndex: 20 }}>
-                <motion.div
-                  className="absolute w-full flex justify-center"
-                  style={{ top: "80px" }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    1. Analyze Your Workflow
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute w-full flex justify-center"
-                  style={{ top: "380px" }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  <div className="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    2. Connect Your Tools
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute w-full flex justify-center"
-                  style={{ top: "680px" }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
-                >
-                  <div className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    3. Implement AI Solutions
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute w-full flex justify-center"
-                  style={{ top: "980px" }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                >
-                  <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
-                    4. Track Success
-                  </div>
-                </motion.div>
-              </div>
-
               {/* Cards with consistent spacing */}
-              <div className="relative lg:top-[160px] z-20">
-                <div ref={analysisRef} className="mt-32 lg:mt-0">
+              <div className="relative lg:top-[160px] z-[100]">
+                <div ref={analysisRef} className="mt-16 lg:mt-0">
                   <SystemAnalysisCard className="w-full max-w-[280px] mx-auto" />
                 </div>
               </div>
-              <div className="relative lg:top-[400px] z-20">
-                <div ref={integrationRef} className="mt-32 lg:mt-0">
+              <div className="relative lg:top-[400px] z-[90]">
+                <div ref={integrationRef} className="mt-24 lg:mt-0">
                   <IntegrationCard className="w-full max-w-[280px] mx-auto" />
                 </div>
               </div>
-              <div className="relative lg:top-[160px] z-20">
-                <div ref={aiRef} className="mt-32 lg:mt-0">
+              <div className="relative lg:top-[160px] z-[80]">
+                <div ref={aiRef} className="mt-24 lg:mt-0">
                   <AIEnhancementCard className="w-full max-w-[280px] mx-auto" />
                 </div>
               </div>
-              <div className="relative lg:top-[400px] z-20">
-                <div ref={resultsRef} className="mt-32 lg:mt-0">
+              <div className="relative lg:top-[400px] z-[70]">
+                <div ref={resultsRef} className="mt-24 lg:mt-0">
                   <ResultsCard className="w-full max-w-[280px] mx-auto" />
                 </div>
               </div>
@@ -287,9 +236,9 @@ const Hero = () => {
                   {/* Analysis to Integration */}
                   <line 
                     x1="50%" 
-                    y1="150" 
+                    y1="120" 
                     x2="50%" 
-                    y2="450"
+                    y2="360"
                     stroke="rgb(99, 179, 237)"
                     strokeWidth="4"
                     strokeDasharray="8 8"
@@ -299,9 +248,9 @@ const Hero = () => {
                   {/* Integration to AI */}
                   <line 
                     x1="50%" 
-                    y1="450" 
+                    y1="360" 
                     x2="50%" 
-                    y2="750"
+                    y2="600"
                     stroke="rgb(129, 140, 248)"
                     strokeWidth="4"
                     strokeDasharray="8 8"
@@ -311,9 +260,9 @@ const Hero = () => {
                   {/* AI to Results */}
                   <line 
                     x1="50%" 
-                    y1="750" 
+                    y1="600" 
                     x2="50%" 
-                    y2="1050"
+                    y2="840"
                     stroke="rgb(34, 197, 94)"
                     strokeWidth="4"
                     strokeDasharray="8 8"
