@@ -7,7 +7,7 @@ import TrustedCompanies from './TrustedCompanies'
 import WhatWeDo from './WhatWeDo'
 import { Link } from 'react-router-dom'
 import textContent from '../../data/content/TextContent.json'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { AnimatedBeam } from '../ui/animated-beam'
 
 const Hero = () => {
