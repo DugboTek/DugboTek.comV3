@@ -1,22 +1,15 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import textContent from '../../data/content/TextContent.json'
 
 interface ResultsCardProps {
   className?: string
 }
 
-const results = [
-  { name: 'Time Saved', description: '70% Reduction', icon: '⏱️' },
-  { name: 'Cost Efficiency', description: '50% Decrease', icon: '💰' },
-  { name: 'Error Reduction', description: '90% Improvement', icon: '✅' },
-  { name: '24/7 Operation', description: 'Continuous automation', icon: '🔄' },
-  { name: 'Real-time Insights', description: 'Live monitoring & alerts', icon: '📊' },
-  { name: 'Scalable Solutions', description: 'Grow with your needs', icon: '📈' },
-]
-
 const ResultsCard = ({ className = '' }: ResultsCardProps) => {
   const [isHovered, setIsHovered] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { results } = textContent.hero.cards
 
   const handleMouseEnter = () => {
     if (!isOpen) setIsHovered(true)
@@ -50,7 +43,7 @@ const ResultsCard = ({ className = '' }: ResultsCardProps) => {
           <div className="w-6 h-6 rounded bg-green-100 flex items-center justify-center text-green-500">
             📈
           </div>
-          <span className="text-clay-text text-[15px] font-medium">Automated Results</span>
+          <span className="text-clay-text text-[15px] font-medium">{results.title}</span>
         </div>
 
         <AnimatePresence>
@@ -67,30 +60,30 @@ const ResultsCard = ({ className = '' }: ResultsCardProps) => {
                   <div className="w-5 h-5 rounded bg-green-100 flex items-center justify-center text-green-500 text-xs">
                     📈
                   </div>
-                  <span className="text-clay-text text-[15px] font-medium">Measurable Impact</span>
+                  <span className="text-clay-text text-[15px] font-medium">{results.title}</span>
                 </div>
                 <p className="text-clay-subtext text-[14px] leading-relaxed">
-                  See the tangible results of automation with significant improvements across your operations.
+                  {results.description}
                 </p>
               </div>
               <div className="p-4 space-y-3">
-                {results.map((result, index) => (
+                {results.metrics.map((metric, index) => (
                   <motion.div
-                    key={result.name}
+                    key={metric.name}
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
                     <div className="w-8 h-8 rounded bg-gray-50 flex items-center justify-center">
-                      {result.icon}
+                      {metric.icon}
                     </div>
                     <div>
                       <div className="text-clay-text text-[14px] font-medium">
-                        {result.name}
+                        {metric.name}
                       </div>
                       <div className="text-clay-subtext text-[13px]">
-                        {result.description}
+                        {metric.description}
                       </div>
                     </div>
                   </motion.div>

@@ -6,31 +6,72 @@ import ResultsCard from './ResultsCard'
 import TrustedCompanies from './TrustedCompanies'
 import WhatWeDo from './WhatWeDo'
 import { Link } from 'react-router-dom'
+import textContent from '../../data/content/TextContent.json'
+import React from 'react'
 
 const Hero = () => {
+  const { hero } = textContent
+
   return (
     <>
       <section className="relative pt-24 pb-32 overflow-visible">
         <div className="container mx-auto px-6 md:px-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-hero-title font-bold leading-tight lg:leading-hero text-clay-text max-w-hero tracking-[-0.02em] text-center mx-auto">
-            Automate Your Business
-            <br />
-            with Intelligent Solutions
+          <h1 className="text-center mx-auto">
+            <span className="block text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-clay-text tracking-[-0.02em] mb-2">
+              {hero.mainTitle.primary}
+            </span>
+            <span className="block text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-clay-text/80 tracking-[-0.02em]">
+              {hero.mainTitle.secondary}
+            </span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-hero-subtitle leading-relaxed lg:leading-subtitle text-clay-subtext max-w-subtitle mt-6 text-center mx-auto px-4 sm:px-0">
-            Transform your operations with our AI-powered automation platform. Analyze, integrate, and optimize your business processes.
-          </p>
+          <div className="text-lg sm:text-xl lg:text-hero-subtitle leading-relaxed lg:leading-subtitle text-clay-subtext max-w-subtitle mt-6 text-center mx-auto px-4 sm:px-0 flex flex-col gap-1">
+            {hero.subtitle.map((line, index) => (
+              <p key={index}>
+                {typeof line === 'string' ? (
+                  line
+                ) : (
+                  <>
+                    {line.segments.map((segment, segmentIndex) => (
+                      segment.highlight ? (
+                        <motion.span
+                          key={segmentIndex}
+                          className="font-bold text-clay-text"
+                          initial={{ opacity: 0.7 }}
+                          animate={{ opacity: 1 }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            delay: segmentIndex * 0.3
+                          }}
+                        >
+                          {segment.text}
+                        </motion.span>
+                      ) : (
+                        <span key={segmentIndex}>{segment.text}</span>
+                      )
+                    ))}
+                  </>
+                )}
+              </p>
+            ))}
+          </div>
 
           {/* Add button */}
           <div className="flex justify-center mt-8 px-4 sm:px-0">
             <Link
               to="/signup"
-              className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-base lg:text-nav px-6 py-4 rounded-lg font-medium flex items-center gap-2"
+              className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-base lg:text-nav px-6 py-4 rounded-lg font-medium flex items-center gap-2 relative"
             >
               <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              Schedule a Call
+              {hero.callToAction.text}
+              {hero.callToAction.tag && (
+                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                  {hero.callToAction.tag}
+                </span>
+              )}
             </Link>
           </div>
 

@@ -1,52 +1,147 @@
 {
-    "whatWeDo": {
-      "mainTitle": "What We Do",
-      "mainIntro": "We give small business owners their time back through intelligent automation. By harnessing the power of AI, we transform time-consuming manual processes into streamlined, automated workflows that work for you 24/7.",
-      "sections": {
-        "findingOpportunities": {
-          "title": "Finding Hidden Opportunities",
-          "content": "Our expertise lies in identifying those frustrating bottlenecks in your business operations – the repetitive tasks that eat away at your valuable time. Whether it's manually processing invoices, responding to routine customer inquiries, or managing appointment schedules, we spot where AI can make the biggest impact.",
-          "automationOpportunities": [
-            "Automated email response with AI personalization",
-            "Automated invoice processing and payment tracking",
-            "Time tracking and payroll automation",
-            "Smart appointment scheduling with automatic reminders",
-            "Expense report automation with receipt scanning",
-            "Smart document organization and retrieval",
-            "Customer feedback analysis and response",
-            "Meeting coordination and follow-up system",
-            "Project management and client updates",
-            "AI document processing and data extraction",
-            "Sales pipeline automation and follow-ups",
-            "Social media content creation and scheduling",
-            "Marketing content creation with AI assistance",
-            "Lead qualification and nurturing workflows",
-            "Streamlined client onboarding process",
-            "Dynamic quote generation system",
-            "Real-time business analytics dashboard",
-            "E-commerce and accounting integration",
-            "Intelligent inventory management with predictive ordering",
-            "AI-powered customer support chatbot that learns from your business"
-          ]
-        },
-        "customSolutions": {
-          "title": "Custom Solutions for Your Business",
-          "content": "Every business is unique, which is why we create tailored AI solutions that fit your specific needs. Our custom automations handle tasks in seconds that would normally take hours, allowing you to:",
-          "benefits": [
-            "Focus on strategic growth instead of drowning in administrative work",
-            "Provide faster, more consistent service to your customers",
-            "Reduce errors and improve accuracy in daily operations",
-            "Scale your business without proportionally increasing overhead"
-          ]
-        },
-        "results": {
-          "title": "Real Results, Real Time Savings",
-          "content": "Imagine completing your monthly reporting in minutes instead of days, or having customer support questions answered instantly, 24/7. Our AI solutions don't just save time – they transform how your business operates, giving you the freedom to focus on what really matters: growing your business and serving your customers better."
-        },
-        "guarantee": {
-          "title": "Our Promise to You",
-          "content": "We're so confident in our ability to transform your business that we offer a 100% money-back guarantee. If you're not completely satisfied with our AI solutions within the first 90 days, we'll refund your entire investment – no questions asked. Your success is our priority, and we stand behind our work."
-        }
+  "hero": {
+    "mainTitle": {
+      "primary": "Work Smarter, Not Harder",
+      "secondary": "AI Automation for Modern Business"
+    },
+    "subtitle": [
+      "Transform your business with intelligent automation.",
+      {
+        "segments": [
+          { "text": "", "highlight": false },
+          { "text": "Streamline", "highlight": true },
+          { "text": " operations. ", "highlight": false },
+          { "text": "Reduce", "highlight": true },
+          { "text": " costs. ", "highlight": false },
+          { "text": "Scale", "highlight": true },
+          { "text": " effortlessly.", "highlight": false }
+        ]
+      },
+      "Let AI handle the routine while you focus on growth."
+    ],
+    "callToAction": {
+      "text": "Schedule a Call",
+      "tag": "Free"
+    },
+    "cards": {
+      "systemAnalysis": {
+        "title": "System Analysis",
+        "description": "We analyze your current workflows and identify automation opportunities.",
+        "tag": "Step 1"
+      },
+      "integration": {
+        "title": "Integration",
+        "description": "Seamlessly connect your existing tools and systems.",
+        "tag": "Step 2"
+      },
+      "aiEnhancement": {
+        "title": "AI Enhancement",
+        "description": "Add intelligent automation to streamline processes.",
+        "tag": "Step 3"
+      },
+      "results": {
+        "title": "Measurable Impact",
+        "description": "See tangible results with significant improvements across operations.",
+        "metrics": [
+          { "name": "Time Saved", "description": "70% Reduction", "icon": "⏱️" },
+          { "name": "Cost Efficiency", "description": "50% Decrease", "icon": "💰" },
+          { "name": "Error Reduction", "description": "90% Improvement", "icon": "✅" },
+          { "name": "24/7 Operation", "description": "Continuous automation", "icon": "🔄" },
+          { "name": "Real-time Insights", "description": "Live monitoring & alerts", "icon": "📊" },
+          { "name": "Scalable Solutions", "description": "Grow with your needs", "icon": "📈" }
+        ]
+      }
+    }
+  },
+  "whatWeDo": {
+    "mainTitle": "What We Do",
+    "mainIntro": "We give small business owners their time back through intelligent automation. By harnessing the power of AI, we transform time-consuming manual processes into streamlined, automated workflows that work for you 24/7.",
+    "sections": {
+      "findingOpportunities": {
+        "title": "Finding Hidden Opportunities",
+        "content": "Our expertise lies in identifying those frustrating bottlenecks in your business operations – the repetitive tasks that eat away at your valuable time. Whether it's manually processing invoices, responding to routine customer inquiries, or managing appointment schedules, we spot where AI can make the biggest impact.",
+        "automationOpportunities": [
+          "Automated email response with AI personalization",
+          "Automated invoice processing and payment tracking",
+          "Time tracking and payroll automation",
+          "Smart appointment scheduling with automatic reminders",
+          "Expense report automation with receipt scanning",
+          "Smart document organization and retrieval",
+          "Customer feedback analysis and response",
+          "Meeting coordination and follow-up system",
+          "Project management and client updates",
+          "AI document processing and data extraction",
+          "Sales pipeline automation and follow-ups",
+          "Social media content creation and scheduling",
+          "Marketing content creation with AI assistance",
+          "Lead qualification and nurturing workflows",
+          "Streamlined client onboarding process",
+          "Dynamic quote generation system",
+          "Real-time business analytics dashboard",
+          "E-commerce and accounting integration",
+          "Intelligent inventory management with predictive ordering",
+          "AI-powered customer support chatbot that learns from your business"
+        ]
+      },
+      "customSolutions": {
+        "title": "Custom Solutions for Your Business",
+        "content": "Every business is unique, which is why we create tailored AI solutions that fit your specific needs. Our custom automations handle tasks in seconds that would normally take hours, allowing you to:",
+        "benefits": [
+          "Focus on strategic growth instead of drowning in administrative work",
+          "Provide faster, more consistent service to your customers",
+          "Reduce errors and improve accuracy in daily operations",
+          "Scale your business without proportionally increasing overhead"
+        ]
+      },
+      "results": {
+        "title": "Real Results, Real Time Savings",
+        "content": "Imagine completing your monthly reporting in minutes instead of days, or having customer support questions answered instantly, 24/7. Our AI solutions don't just save time – they transform how your business operates, giving you the freedom to focus on what really matters: growing your business and serving your customers better.",
+        "counterLabel": "Total Time Saved by Our Customers",
+        "counterSubtext": "Based on average time savings across all customers"
+      },
+      "guarantee": {
+        "title": "Our Promise to You",
+        "content": "We're so confident in our ability to transform your business that we offer a 100% money-back guarantee. If you're not completely satisfied with our AI solutions within the first 90 days, we'll refund your entire investment – no questions asked. Your success is our priority, and we stand behind our work.",
+        "tag": "100% Money Back Guarantee",
+        "trustElements": [
+          { "text": "90-Day Trial", "icon": "✓" },
+          { "text": "No Questions Asked", "icon": "✓" }
+        ]
+      }
+    }
+  },
+  "trustedCompanies": {
+    "title": "CONNECT WITH A LIBRARY OF 2000+ EXISTING BUSINESS TOOLS"
+  },
+  "header": {
+    "navigation": [
+      { "text": "Home", "path": "/" },
+      { "text": "About", "path": "/about" },
+      { "text": "Services", "path": "/services" }
+    ],
+    "callToAction": {
+      "text": "Schedule a Call",
+      "tag": "Free"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 DugboTek. All rights reserved.",
+    "sections": {
+      "company": {
+        "title": "Company",
+        "links": [
+          { "text": "About Us", "path": "/about" },
+          { "text": "Contact", "path": "/contact" },
+          { "text": "Careers", "path": "/careers" }
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          { "text": "Privacy Policy", "path": "/privacy" },
+          { "text": "Terms of Service", "path": "/terms" }
+        ]
       }
     }
   }
+}
