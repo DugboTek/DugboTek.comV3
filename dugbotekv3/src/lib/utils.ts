@@ -1,6 +1,6 @@
-type ClassValue = string | number | boolean | undefined | null | { [key: string]: boolean }
-type ClassArray = ClassValue[]
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
-export function cn(...inputs: ClassArray): string {
-  return inputs.filter(Boolean).join(' ')
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 } 

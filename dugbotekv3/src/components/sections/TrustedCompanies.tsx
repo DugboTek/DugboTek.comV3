@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import textContent from '../../data/content/TextContent.json';
 
 // Import company logos
 import microsoft from '../../assets/connections/Microsoft_logo.svg.webp';
@@ -29,6 +30,8 @@ const companies = [
 ];
 
 export const TrustedCompanies: React.FC = () => {
+  const { trustedCompanies } = textContent;
+
   return (
     <div className="mt-48 w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-white overflow-hidden z-[1]">
       {/* Background Grid */}
@@ -84,7 +87,7 @@ export const TrustedCompanies: React.FC = () => {
       <div className="py-16 relative z-[2]">
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-2xl font-semibold text-center mb-12 text-clay-text">
-            CONNECT WITH A LIBRARY OF 2000+ EXISTING BUSINESS TOOLS
+            {trustedCompanies.title}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center">
             {companies.map((company) => (
