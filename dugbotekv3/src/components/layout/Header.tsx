@@ -12,9 +12,9 @@ const Header = () => {
       hasDropdown: true 
     },
     { 
-      label: 'Product', 
-      path: '/product',
-      hasDropdown: true 
+      label: 'Case Studies', 
+      path: '/case-studies',
+      hasDropdown: false 
     },
     { 
       label: 'Resources', 
