@@ -55,7 +55,7 @@ export const useFlowchartScaler = ({
 
     // Create resize observer
     const resizeObserver = new ResizeObserver(
-      debounce((entries: ResizeObserverEntry[]) => {
+      debounce((_entries: ResizeObserverEntry[]) => {
         updateScale();
       }, 100)
     );

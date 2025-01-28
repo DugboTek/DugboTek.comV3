@@ -1,9 +1,14 @@
-import { FlowCard, ConnectionPoint, ConnectionSide } from './types';
+import { FlowCard, ConnectionSide } from './types';
+
+interface Point {
+  x: number;
+  y: number;
+}
 
 export const getConnectionPoint = (
   card: FlowCard,
   side: ConnectionSide
-): ConnectionPoint => {
+): Point => {
   const { x, y, width, height } = card.position;
   
   switch(side) {
@@ -18,49 +23,13 @@ export const getConnectionPoint = (
   }
 };
 
-export const calculatePath = (
-  start: ConnectionPoint,
-  end: ConnectionPoint,
-  fromSide: ConnectionSide,
-  toSide: ConnectionSide
-): string => {
-  // Calculate control points for smooth curves
-  const midX = (start.x + end.x) / 2;
-  const midY = (start.y + end.y) / 2;
+export function calculatePath(start: Point, end: Point): string {
+  const dx = end.x - start.x;
+  const dy = end.y - start.y;
   
-  let controlPoint1: ConnectionPoint;
-  let controlPoint2: ConnectionPoint;
+  // Use control points at 1/3 and 2/3 of the distance for a smoother curve
+  const cp1x = start.x + dx * 0.33;
+  const cp2x = start.x + dx * 0.66;
   
-  // Adjust control points based on connection sides
-  switch(fromSide) {
-    case 'right':
-      controlPoint1 = { x: start.x + 50, y: start.y };
-      break;
-    case 'left':
-      controlPoint1 = { x: start.x - 50, y: start.y };
-      break;
-    case 'top':
-      controlPoint1 = { x: start.x, y: start.y - 50 };
-      break;
-    case 'bottom':
-      controlPoint1 = { x: start.x, y: start.y + 50 };
-      break;
-  }
-  
-  switch(toSide) {
-    case 'right':
-      controlPoint2 = { x: end.x + 50, y: end.y };
-      break;
-    case 'left':
-      controlPoint2 = { x: end.x - 50, y: end.y };
-      break;
-    case 'top':
-      controlPoint2 = { x: end.x, y: end.y - 50 };
-      break;
-    case 'bottom':
-      controlPoint2 = { x: end.x, y: end.y + 50 };
-      break;
-  }
-  
-  return `M ${start.x} ${start.y} C ${controlPoint1.x} ${controlPoint1.y}, ${controlPoint2.x} ${controlPoint2.y}, ${end.x} ${end.y}`;
-}; 
+  return `M ${start.x},${start.y} C ${cp1x},${start.y + dy * 0.1} ${cp2x},${end.y - dy * 0.1} ${end.x},${end.y}`;
+} 

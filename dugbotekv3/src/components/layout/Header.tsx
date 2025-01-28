@@ -10,8 +10,8 @@ const Header = () => {
   const navItems = [
     { 
       label: 'Solutions', 
-      path: '/solutions',
-      hasDropdown: true 
+      path: '/signup',
+      hasDropdown: false 
     },
     { 
       label: 'Case Studies', 
@@ -21,12 +21,12 @@ const Header = () => {
     },
     { 
       label: 'Resources', 
-      path: '/resources',
-      hasDropdown: true 
+      path: '/signup',
+      hasDropdown: false 
     },
     { 
       label: 'Pricing', 
-      path: '/pricing',
+      path: '/signup',
       hasDropdown: false 
     },
   ]
@@ -119,29 +119,17 @@ const Header = () => {
                   className="flex items-center text-clay-text hover:text-clay-text/80 transition-colors text-nav"
                 >
                   {item.label}
-                  {item.hasDropdown && (
-                    <svg
-                      className="ml-1 w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  )}
                 </Link>
               )
             ))}
           </Menu>
           <div className="ml-7 flex items-center space-x-4 mr-6">
-            <button className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3">
+            <Link
+              to="/signup"
+              className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3"
+            >
               Log in
-            </button>
+            </Link>
             <Link
               to="/signup"
               className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-nav px-5 py-3 rounded-lg flex items-center gap-2"
@@ -195,27 +183,15 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                    {item.hasDropdown && (
-                      <svg
-                        className="ml-1 w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    )}
                   </Link>
                 ))}
                 <div className="flex flex-col space-y-2 pt-2 border-t border-gray-100">
-                  <button className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3">
+                  <Link
+                    to="/signup"
+                    className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3"
+                  >
                     Log in
-                  </button>
+                  </Link>
                   <Link
                     to="/signup"
                     className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-nav px-5 py-3 rounded-lg flex items-center gap-2"

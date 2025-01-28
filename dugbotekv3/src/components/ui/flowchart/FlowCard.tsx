@@ -6,86 +6,34 @@ interface FlowCardProps {
   scale: number;
 }
 
-const ContentSection: React.FC<{ content?: ContentItem; scale: number }> = ({ content, scale }) => {
+const renderContent = (content: ContentItem | undefined) => {
   if (!content) return null;
 
-  const scaledStyle = {
-    ...(content.style || {}),
-    fontSize: content.style?.fontSize 
-      ? `${parseFloat(content.style.fontSize as string) * scale}px`
-      : undefined,
-    padding: content.style?.padding
-      ? content.style.padding.toString().split(' ').map(p => 
-          `${parseFloat(p) * scale}px`
-        ).join(' ')
-      : undefined
-  };
+  if (typeof content.value === 'string') {
+    return <span style={content.style}>{content.value}</span>;
+  }
 
-  return (
-    <div className="h-full w-full flex items-center justify-center">
-      {content.type === 'text' ? (
-        <div
-          className="text-sm overflow-hidden text-ellipsis h-full w-full flex items-center justify-center"
-          style={scaledStyle}
-        >
-          {typeof content.value === 'string' ? content.value : 
-            React.cloneElement(content.value as React.ReactElement, {
-              className: `${(content.value as React.ReactElement).props.className} transform scale-${scale}`
-            })
-          }
-        </div>
-      ) : (
-        <img
-          src={content.src}
-          alt={content.alt || ''}
-          className="max-w-full max-h-full object-contain"
-          style={scaledStyle}
-        />
-      )}
-    </div>
-  );
+  return <div style={content.style}>{content.value}</div>;
 };
 
-export const FlowCard: React.FC<FlowCardProps> = React.memo(({ card, scale }) => {
+export const FlowCard: React.FC<FlowCardProps> = ({ card, scale }) => {
   const { position, content } = card;
-  const { x, y, width, height } = position;
-
-  const scaledStyle = {
-    left: x * scale,
-    top: y * scale,
-    width: width * scale,
-    height: height * scale,
-    boxShadow: `0 ${3 * scale}px ${6 * scale}px rgba(0,0,0,0.16)`,
-    borderRadius: `${8 * scale}px`
-  };
+  const borderWidth = 1 * scale;
 
   return (
     <div
-      className="absolute bg-white flex items-stretch"
-      style={scaledStyle}
+      className="absolute bg-white rounded-lg shadow-sm border border-gray-200 flex items-stretch overflow-hidden"
+      style={{
+        left: position.x,
+        top: position.y,
+        width: position.width,
+        height: position.height,
+        borderWidth,
+      }}
     >
-      <div className="w-full h-full grid grid-cols-[auto_1fr_auto]">
-        {/* Left Section */}
-        {content.left && (
-          <div className="h-full flex items-center">
-            <ContentSection content={content.left} scale={scale} />
-          </div>
-        )}
-
-        {/* Center Section */}
-        {content.center && (
-          <div className="h-full flex items-center">
-            <ContentSection content={content.center} scale={scale} />
-          </div>
-        )}
-
-        {/* Right Section */}
-        {content.right && (
-          <div className="h-full flex items-center">
-            <ContentSection content={content.right} scale={scale} />
-          </div>
-        )}
-      </div>
+      {renderContent(content.left)}
+      {renderContent(content.center)}
+      {renderContent(content.right)}
     </div>
   );
-}); 
+}; 

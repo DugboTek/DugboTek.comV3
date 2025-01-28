@@ -1,6 +1,28 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import EmailFlow from '../assets/images/emailflow.png';
+
+const formatBulletPoints = (text: string) => {
+  // Split the text into lines
+  const lines = text.split('\n');
+  
+  // Process each line
+  return (
+    <div className="space-y-2">
+      {lines.map((line, index) => {
+        if (line.trim().startsWith('•')) {
+          // Remove bullet and any leading/trailing whitespace
+          const text = line.trim().substring(1).trim();
+          return (
+            <li key={index} className="ml-4">
+              {text}
+            </li>
+          );
+        }
+        return line.trim() ? <p key={index}>{line}</p> : null;
+      })}
+    </div>
+  );
+};
 
 const CaseStudies = () => {
   const location = useLocation();
@@ -284,70 +306,110 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="pt-32 pb-16">
+    <div className="pt-32 pb-16 bg-gradient-to-b from-clay-bg to-clay-bg/50">
       <div className="px-4 md:px-8">
         <div className="max-w-[1920px] mx-auto">
           <div className="max-w-4xl mx-auto text-center mb-24">
-            <h1 className="text-5xl font-bold text-clay-text mb-6">Case Studies</h1>
+            <h1 className="text-6xl font-bold text-clay-text mb-6 bg-gradient-to-r from-clay-text to-clay-text/70 bg-clip-text text-transparent">
+              Case Studies
+            </h1>
             <p className="text-clay-subtext text-xl">
-              Discover how we've helped businesses across different industries transform their operations with intelligent automation.
+              Discover how we've helped businesses across different industries transform their operations with 
+              <span className="text-clay-text font-semibold"> intelligent automation</span>.
             </p>
           </div>
           
-          <div className="space-y-32">
+          <div className="space-y-48">
             {caseStudies.map((study) => (
               <section 
                 key={study.id} 
                 id={study.id}
-                className={`scroll-mt-32 p-12
-                  bg-white/70 backdrop-blur-sm
-                  border border-white/30
-                  rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.1)]
-                  ${study.id === 'fitness' ? 'max-w-none' : 'max-w-[1600px] mx-auto'}`}
+                className="scroll-mt-32 relative"
               >
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="p-4 rounded-2xl bg-clay-text/5 text-clay-text">
-                    {study.icon}
-                  </div>
-                  <div>
-                    <h2 className="text-4xl font-bold text-clay-text">{study.title}</h2>
-                    <p className="text-clay-subtext text-lg mt-2 max-w-3xl">{study.description}</p>
+                {/* Header Section */}
+                <div className="mb-12">
+                  <div className="flex items-center space-x-6 mb-6">
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-clay-text/10 to-clay-text/5 text-clay-text shadow-lg">
+                      {study.icon}
+                    </div>
+                    <div>
+                      <h2 className="text-5xl font-bold text-clay-text mb-3">{study.title}</h2>
+                      <p className="text-clay-subtext text-xl max-w-3xl">
+                        <span className="text-clay-text font-medium">{study.description.split(' through ')[0]}</span>
+                        {' through '}
+                        <span className="text-blue-500 font-medium">{study.description.split(' through ')[1]}</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
-                
-                <div className={`grid gap-12 ${study.id === 'fitness' ? 'grid-cols-1 min-[1264px]:grid-cols-[1fr_1px_minmax(1000px,_1.5fr)]' : 'md:grid-cols-2'}`}>
-                  <div className="space-y-12">
-                    <div>
-                      <h3 className="text-2xl font-semibold text-clay-text mb-4">The Challenge</h3>
-                      <div className="text-clay-subtext text-lg leading-relaxed whitespace-pre-line">
-                        {study.challenge}
+
+                {/* Bento Grid Layout */}
+                <div className={`grid gap-6 ${study.id === 'fitness' ? 'grid-cols-1 min-[1264px]:grid-cols-[1.2fr_1.8fr]' : 'grid-cols-1 lg:grid-cols-2'}`}>
+                  {/* Left Column */}
+                  <div className="grid gap-6 content-start">
+                    {/* Challenge Card */}
+                    <div className="p-8 bg-white/40 backdrop-blur-sm border border-white/30 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
+                      <div className="flex items-center space-x-4 mb-6">
+                        <div className="p-2 rounded-xl bg-red-500/10">
+                          <svg className="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-2xl font-semibold text-clay-text">The Challenge</h3>
+                      </div>
+                      <div className="text-clay-subtext text-lg leading-relaxed">
+                        {formatBulletPoints(study.challenge)}
                       </div>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-clay-text mb-4">Our Solution</h3>
-                      <div className="text-clay-subtext text-lg leading-relaxed whitespace-pre-line">
-                        {study.solution}
+
+                    {/* Results Card */}
+                    <div className="p-8 bg-white/40 backdrop-blur-sm border border-white/30 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
+                      <div className="flex items-center space-x-4 mb-6">
+                        <div className="p-2 rounded-xl bg-green-500/10">
+                          <svg className="w-6 h-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-2xl font-semibold text-clay-text">The Results</h3>
                       </div>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-clay-text mb-4">The Results</h3>
-                      <div className="text-clay-subtext text-lg leading-relaxed whitespace-pre-line">
-                        {study.results}
+                      <div className="text-clay-subtext text-lg leading-relaxed">
+                        {formatBulletPoints(study.results)}
                       </div>
                     </div>
                   </div>
-                  {study.id === 'fitness' && (
-                    <>
-                      <div className="hidden min-[1264px]:block bg-gray-200/50 h-full w-[1px]" />
-                      <div className="flex items-center justify-center p-4">
+
+                  {/* Right Column */}
+                  <div className="grid gap-6 content-start">
+                    {/* Solution Card */}
+                    <div className="p-8 bg-white/40 backdrop-blur-sm border border-white/30 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
+                      <div className="flex items-center space-x-4 mb-6">
+                        <div className="p-2 rounded-xl bg-blue-500/10">
+                          <svg className="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <h3 className="text-2xl font-semibold text-clay-text">Our Solution</h3>
+                      </div>
+                      <div className="text-clay-subtext text-lg leading-relaxed">
+                        {formatBulletPoints(study.solution)}
+                      </div>
+                    </div>
+
+                    {/* Image for Fitness Case Study */}
+                    {study.id === 'fitness' && (
+                      <div className="p-8 bg-white/40 backdrop-blur-sm border border-white/30 rounded-3xl shadow-lg hover:shadow-xl transition-shadow">
                         <img 
-                          src={EmailFlow} 
+                          src="/images/emailflow.png"
                           alt="Email Communication Flow" 
-                          className="max-w-full h-[700px] object-contain rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.15)]"
+                          className="w-full h-auto object-contain rounded-2xl"
+                          onError={(e) => {
+                            console.error('Image failed to load:', e);
+                            e.currentTarget.style.display = 'none';
+                          }}
                         />
                       </div>
-                    </>
-                  )}
+                    )}
+                  </div>
                 </div>
               </section>
             ))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlowChartConfig, FlowCard as FlowCardType } from './types';
+import { FlowChartConfig } from './types';
 import { FlowCard } from './FlowCard';
 import { getConnectionPoint, calculatePath } from './utils';
 import { useFlowchartScaler } from './hooks/useFlowchartScaler';
@@ -59,12 +59,7 @@ export const FlowChart: React.FC<FlowChartProps> = ({ config, scalingOptions }) 
 
             const start = getConnectionPoint(fromCard, connection.from.side);
             const end = getConnectionPoint(toCard, connection.to.side);
-            const pathData = calculatePath(
-              start,
-              end,
-              connection.from.side,
-              connection.to.side
-            );
+            const pathData = calculatePath(start, end);
 
             const isFaded = connection.from.cardId.includes('fade') || connection.to.cardId.includes('fade');
             const strokeWidth = 2 * scale;

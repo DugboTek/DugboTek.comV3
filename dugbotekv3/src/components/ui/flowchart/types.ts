@@ -1,3 +1,5 @@
+import { CSSProperties, ReactNode } from 'react';
+
 export interface FlowChartConfig {
   grid: {
     width: number;    // Total grid width in px
@@ -24,18 +26,29 @@ export interface FlowCard {
   };
 }
 
-export type ContentItem = 
-  | { type: 'text'; value: string; style?: React.CSSProperties }
-  | { type: 'image'; src: string; alt?: string; style?: React.CSSProperties };
+export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
+
+export interface Position {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface ContentItem {
+  type: 'text';
+  value: string | ReactNode;
+  style?: CSSProperties;
+}
 
 export interface Connection {
   from: {
     cardId: string;
-    side: 'top' | 'left' | 'bottom' | 'right';
+    side: ConnectionSide;
   };
   to: {
     cardId: string;
-    side: 'top' | 'left' | 'bottom' | 'right';
+    side: ConnectionSide;
   };
   lineType: 'solid' | 'dotted';
 }
@@ -43,6 +56,4 @@ export interface Connection {
 export type ConnectionPoint = {
   x: number;
   y: number;
-};
-
-export type ConnectionSide = 'top' | 'left' | 'bottom' | 'right'; 
+}; 

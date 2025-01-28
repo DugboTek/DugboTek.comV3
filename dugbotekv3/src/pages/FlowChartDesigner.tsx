@@ -1,12 +1,16 @@
 import { FlowChart } from '../components/ui/flowchart';
+import type { FlowChartConfig } from '../components/ui/flowchart';
 import { PaperAirplaneIcon } from '../components/ui/icons/PaperAirplane';
 import ChatGPTLogo from '../assets/providers/chatgpt.png';
 import EmailIcon from '../images/email.png';
 
 const FlowChartDesigner = () => {
   // Flow chart configuration
-  const flowChartConfig = {
-    grid: { width: 1100, height: 400 },
+  const flowChartConfig: FlowChartConfig = {
+    grid: {
+      width: 1200,
+      height: 800
+    },
     cards: [
       // Faded top email card
       {
