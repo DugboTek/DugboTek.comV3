@@ -68,4 +68,13 @@ pids
 .vercel
 
 # Local Netlify folder
-.netlify 
+.netlify
+
+# Vite
+.vite/
+*.local
+/dev-dist
+.env.*.local
+
+# Development server
+.hot-reload.json 

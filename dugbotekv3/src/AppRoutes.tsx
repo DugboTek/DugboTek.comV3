@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import SignupPage from './pages/SignupPage'
+import CaseStudies from './pages/CaseStudies'
+import SuccessPage from './pages/SuccessPage'
 
 const AppRoutes = () => {
   return (
@@ -10,6 +12,8 @@ const AppRoutes = () => {
       <Route path="/services" element={<div className="container py-8">Services coming soon</div>} />
       <Route path="/contact" element={<div className="container py-8">Contact coming soon</div>} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/success" element={<SuccessPage />} />
+      <Route path="/case-studies" element={<CaseStudies />} />
       <Route path="*" element={<div className="container py-8">404 - Page not found</div>} />
     </Routes>
   )

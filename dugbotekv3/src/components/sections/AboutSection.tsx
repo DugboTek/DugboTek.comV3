@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import solaHeadshot from '../../assets/headshots/soladugbo.jpg';
 
 export const AboutSection: React.FC = () => {
@@ -23,10 +24,13 @@ export const AboutSection: React.FC = () => {
               <h3 className="text-2xl font-semibold leading-tight text-clay-text">
                 I'm Sola - an AI automation expert passionate about transforming how small businesses operate through intelligent systems.
               </h3>
-              <button className="bg-clay-text text-white px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors inline-flex items-center gap-2">
+              <Link 
+                to="/signup"
+                className="bg-clay-text text-white px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors inline-flex items-center gap-2"
+              >
                 GET STARTED
                 <span className="text-lg">→</span>
-              </button>
+              </Link>
             </div>
           </div>
 
