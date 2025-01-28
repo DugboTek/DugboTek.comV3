@@ -1,8 +1,10 @@
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import AppRoutes from './AppRoutes'
 import { Waves } from './components/ui/waves-background'
+import Home from './pages/Home'
+import CaseStudies from './pages/CaseStudies'
+import FlowChartDesigner from './pages/FlowChartDesigner'
 
 function App() {
   return (
@@ -24,7 +26,11 @@ function App() {
         <div className="relative z-10">
           <Header />
           <main>
-            <AppRoutes />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/flow" element={<FlowChartDesigner />} />
+            </Routes>
           </main>
           <Footer />
         </div>
