@@ -27,11 +27,33 @@ const SignupPage = () => {
     setError(null);
 
     try {
+      // Send data to Supabase
       const { error: supabaseError } = await supabase
         .from('signup_requests')
         .insert([formData]);
 
       if (supabaseError) throw supabaseError;
+
+      // Send data to webhook
+      await fetch('https://hook.us2.make.com/le02e9xcjnbf151p42xu2o2v7j6fjdr2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          business_name: formData.business_name,
+          business_description: formData.business_description,
+          product_description: formData.product_description,
+          website_url: formData.website_url,
+          linkedin_profile: formData.linkedin_profile,
+          contact_preference: formData.contact_preference,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          position: formData.position,
+          phone: formData.phone,
+          email: formData.email
+        })
+      });
 
       // Redirect to success page
       navigate('/success');
