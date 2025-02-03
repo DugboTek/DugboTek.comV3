@@ -21,45 +21,47 @@ const SignupPage = () => {
     email: ''
   });
 
+  const formatUrl = (url: string | undefined, type: 'website' | 'linkedin'): string => {
+    if (!url) return '';
+    
+    let formattedUrl = url.trim().toLowerCase();
+    
+    // Remove common prefixes if they exist
+    formattedUrl = formattedUrl.replace(/^(https?:\/\/)?(www\.)?/, '');
+    
+    if (type === 'linkedin') {
+      // Handle LinkedIn URLs
+      if (!formattedUrl.startsWith('linkedin.com')) {
+        formattedUrl = `linkedin.com/${formattedUrl.replace(/^\/+/, '')}`;
+      }
+    }
+    
+    // Add https:// prefix
+    return `https://${formattedUrl}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
     try {
-      // Send data to Supabase
-      const { error: supabaseError } = await supabase
-        .from('signup_requests')
-        .insert([formData]);
+      // Format URLs before submission
+      const formattedData = {
+        ...formData,
+        website_url: formatUrl(formData.website_url, 'website'),
+        linkedin_profile: formatUrl(formData.linkedin_profile, 'linkedin')
+      };
 
-      if (supabaseError) throw supabaseError;
+      const { error } = await supabase.from('signup_requests').insert([formattedData]);
 
-      // Send data to webhook
-      await fetch('https://hook.us2.make.com/le02e9xcjnbf151p42xu2o2v7j6fjdr2', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          business_name: formData.business_name,
-          business_description: formData.business_description,
-          product_description: formData.product_description,
-          website_url: formData.website_url,
-          linkedin_profile: formData.linkedin_profile,
-          contact_preference: formData.contact_preference,
-          first_name: formData.first_name,
-          last_name: formData.last_name,
-          position: formData.position,
-          phone: formData.phone,
-          email: formData.email
-        })
-      });
+      if (error) throw error;
 
-      // Redirect to success page
+      // Scroll to top before navigation
+      window.scrollTo(0, 0);
       navigate('/success');
     } catch (err) {
-      console.error('Error submitting form:', err);
-      setError('There was an error submitting your request. Please try again.');
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setIsSubmitting(false);
     }
@@ -119,24 +121,24 @@ const SignupPage = () => {
                 <label className="block">
                   <span className="text-clay-text font-medium">Company Website</span>
                   <input
-                    type="url"
+                    type="text"
                     name="website_url"
                     className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2"
                     value={formData.website_url}
                     onChange={handleChange}
-                    placeholder="https://example.com"
+                    placeholder="example.com"
                   />
                 </label>
 
                 <label className="block">
                   <span className="text-clay-text font-medium">LinkedIn Profile</span>
                   <input
-                    type="url"
+                    type="text"
                     name="linkedin_profile"
                     className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2"
                     value={formData.linkedin_profile}
                     onChange={handleChange}
-                    placeholder="linkedin.com/in/..."
+                    placeholder="username or company name"
                   />
                 </label>
               </div>
