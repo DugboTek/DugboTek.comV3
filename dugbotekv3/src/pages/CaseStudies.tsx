@@ -28,7 +28,7 @@ const CaseStudies = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if there's a hash in the URL and scroll to it
+    // If there's a hash in the URL, scroll to that element
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
@@ -36,7 +36,7 @@ const CaseStudies = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [location]);
+  }, [location.hash]);
 
   const caseStudies = [
     {

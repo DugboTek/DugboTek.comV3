@@ -5,10 +5,12 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import { Waves } from './components/ui/waves-background'
 import AppRoutes from './AppRoutes'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative min-h-screen bg-clay-background">
         <Waves
           lineColor="rgba(0, 0, 0, 0.08)"

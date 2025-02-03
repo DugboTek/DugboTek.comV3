@@ -1,11 +1,18 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, MenuItem } from '../ui/navbar-menu'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeItem, setActiveItem] = useState<string | null>(null)
+  const navigate = useNavigate()
+
+  const handleNavigation = (path: string) => {
+    setIsMenuOpen(false); // Close mobile menu
+    setActiveItem(null); // Reset active item
+    navigate(path);
+  };
 
   const navItems = [
     { 
@@ -116,6 +123,7 @@ const Header = () => {
                 <Link
                   key={item.path}
                   to={item.path}
+                  onClick={() => handleNavigation(item.path)}
                   className="flex items-center text-clay-text hover:text-clay-text/80 transition-colors text-nav"
                 >
                   {item.label}
@@ -126,12 +134,14 @@ const Header = () => {
           <div className="ml-7 flex items-center space-x-4 mr-6">
             <Link
               to="/signup"
+              onClick={() => handleNavigation('/signup')}
               className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3"
             >
               Log in
             </Link>
             <Link
               to="/signup"
+              onClick={() => handleNavigation('/signup')}
               className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-nav px-5 py-3 rounded-lg flex items-center gap-2"
             >
               <svg 
@@ -179,8 +189,8 @@ const Header = () => {
                   <Link
                     key={item.path}
                     to={item.path}
+                    onClick={() => handleNavigation(item.path)}
                     className="flex items-center text-clay-text hover:text-clay-text/80 transition-colors text-nav"
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
@@ -188,12 +198,14 @@ const Header = () => {
                 <div className="flex flex-col space-y-2 pt-2 border-t border-gray-100">
                   <Link
                     to="/signup"
+                    onClick={() => handleNavigation('/signup')}
                     className="text-clay-text hover:text-clay-text/80 transition-colors text-nav px-5 py-3"
                   >
                     Log in
                   </Link>
                   <Link
                     to="/signup"
+                    onClick={() => handleNavigation('/signup')}
                     className="bg-clay-text text-clay-background hover:bg-clay-text/90 transition-colors text-nav px-5 py-3 rounded-lg flex items-center gap-2"
                   >
                     <svg 
