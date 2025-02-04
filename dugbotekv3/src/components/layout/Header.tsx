@@ -16,26 +16,21 @@ const Header = () => {
 
   const navItems = [
     { 
-      label: 'Solutions', 
-      path: '/signup',
-      hasDropdown: false 
-    },
-    { 
       label: 'Case Studies', 
       path: '/case-studies',
       hasDropdown: true,
       isProductMenu: true
     },
     { 
-      label: 'Resources', 
-      path: '/signup',
-      hasDropdown: false 
+      label: 'Blog', 
+      path: '/blog',
+      hasDropdown: false
     },
     { 
-      label: 'Pricing', 
-      path: '/signup',
-      hasDropdown: false 
-    },
+      label: 'Resources', 
+      path: '/resources',
+      hasDropdown: false
+    }
   ]
 
   const caseStudies = [
