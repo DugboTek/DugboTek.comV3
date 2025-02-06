@@ -50,12 +50,34 @@ const SignupPage = () => {
       const formattedData = {
         ...formData,
         website_url: formatUrl(formData.website_url, 'website'),
-        linkedin_profile: formatUrl(formData.linkedin_profile, 'linkedin')
+        linkedin_profile: formatUrl(formData.linkedin_profile, 'linkedin'),
       };
 
       const { error } = await supabase.from('signup_requests').insert([formattedData]);
 
       if (error) throw error;
+
+      // Call the webhook after successful signup
+      const webhookUrl = 'https://hook.us2.make.com/miwycu75bcx9ist8bg1cj4v7zwny7pm5';
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          business_name: formData.business_name,
+          business_description: formData.business_description,
+          product_description: formData.product_description,
+          website_url: formData.website_url,
+          linkedin_profile: formData.linkedin_profile,
+          contact_preference: formData.contact_preference,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          position: formData.position,
+          phone: formData.phone,
+          email: formData.email
+        })
+      });
 
       // Scroll to top before navigation
       window.scrollTo(0, 0);
