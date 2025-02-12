@@ -5,6 +5,7 @@ import CaseStudies from './pages/CaseStudies'
 import SuccessPage from './pages/SuccessPage'
 import BlogPage from './pages/Blog'
 import BlogPost from './pages/BlogPost'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/case-studies" element={<CaseStudies />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="*" element={<div className="container py-8">404 - Page not found</div>} />
     </Routes>
   )

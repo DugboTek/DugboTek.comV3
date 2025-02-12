@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import type { SignupRequest } from '../lib/supabase';
+
+interface ExtendedSignupRequest extends SignupRequest {
+  sms_consent: boolean;
+}
 
 const SignupPage = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState<SignupRequest>({
+  const [formData, setFormData] = useState<ExtendedSignupRequest>({
     business_name: '',
     business_description: '',
     product_description: '',
@@ -18,7 +22,8 @@ const SignupPage = () => {
     last_name: '',
     position: '',
     phone: '',
-    email: ''
+    email: '',
+    sms_consent: false
   });
 
   const formatUrl = (url: string | undefined, type: 'website' | 'linkedin'): string => {
@@ -53,7 +58,10 @@ const SignupPage = () => {
         linkedin_profile: formatUrl(formData.linkedin_profile, 'linkedin'),
       };
 
-      const { error } = await supabase.from('signup_requests').insert([formattedData]);
+      const { error } = await supabase.from('signup_requests').insert([{
+        ...formattedData,
+        sms_consent: formData.sms_consent
+      }]);
 
       if (error) throw error;
 
@@ -65,17 +73,10 @@ const SignupPage = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          business_name: formData.business_name,
-          business_description: formData.business_description,
-          product_description: formData.product_description,
-          website_url: formData.website_url,
-          linkedin_profile: formData.linkedin_profile,
-          contact_preference: formData.contact_preference,
-          first_name: formData.first_name,
-          last_name: formData.last_name,
-          position: formData.position,
-          phone: formData.phone,
-          email: formData.email
+          ...formData,
+          website_url: formattedData.website_url,
+          linkedin_profile: formattedData.linkedin_profile,
+          sms_consent: formData.sms_consent
         })
       });
 
@@ -228,6 +229,28 @@ const SignupPage = () => {
                     onChange={handleChange}
                     placeholder="+1 (555) 000-0000"
                   />
+                </label>
+              </div>
+
+              <div className="space-y-4 bg-gray-50 p-4 rounded-lg">
+                <label className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    name="sms_consent"
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-clay-text focus:ring-clay-text"
+                    checked={formData.sms_consent}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      sms_consent: e.target.checked
+                    })}
+                  />
+                  <span className="text-sm text-clay-subtext">
+                    I consent to receive text messages from DugboTek LLC for service notifications, account updates, and promotional content. 
+                    For details about our communication practices, message frequency, and opt-out options, please review our{' '}
+                    <Link to="/privacy-policy" className="text-clay-text underline hover:text-clay-text/80">
+                      Privacy Policy
+                    </Link>.
+                  </span>
                 </label>
               </div>
 
