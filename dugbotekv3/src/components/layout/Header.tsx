@@ -30,11 +30,6 @@ const Header = () => {
       label: 'Resources', 
       path: '/resources',
       hasDropdown: false
-    },
-    {
-      label: 'Work Tracker',
-      path: '/work',
-      hasDropdown: false
     }
   ]
 
